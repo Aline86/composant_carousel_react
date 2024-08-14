@@ -2,7 +2,7 @@
 
 ## Installation
 
-`nmp install`
+`npm install`
 
 ## Composant principal
 

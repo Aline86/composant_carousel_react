@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import '../global.css'
+import '../assets/styles/global.css'
 import CarouselContainer from "./CarouselContainer"
 interface CustomCarouselInfo {
   width: number, 

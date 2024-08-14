@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import '../global.css'
 import Card from "./Card"
 
 interface CarouselData {

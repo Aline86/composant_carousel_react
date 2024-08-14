@@ -7,5 +7,5 @@
 ## Composant principal
 
 `src/Carousel`
-`configurable du=irectement dès son appel dans App ou toute page dédiée`
+`configurable directement dès son appel dans App ou toute page dédiée`
 

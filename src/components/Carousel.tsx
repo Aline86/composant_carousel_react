@@ -14,7 +14,7 @@ function Carousel({width, height, gap, cardNumber}: CustomCarouselInfo) {
   const [transitionFinished, setTransitionFinished] = useState(false);
   const [cardWidth, setCardWidth] = useState<number>(0);
   const cardRef = useRef<HTMLDivElement>();
-  const [hexCharacters, setHexCharacters] = useState<any[]>([0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]);
+  const hexCharacters :any[] =[0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"] ;
   
   function generateColor() {
     let arrayColors = [];

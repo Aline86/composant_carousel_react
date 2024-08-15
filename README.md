@@ -14,6 +14,6 @@
 
 ![capture du rendu visuel](readme_pics/carousel.png)
 
-```Possibilité de gérer la hauteur et largeur en pixel des cards ainsi que l'espacement via les props du composant principal.```
+```Possibilité de gérer la hauteur et largeur en pixel des cards ainsi que l'espacement et le nombre de cards via les props du composant principal.```
 
 ![capture du composant principal de configuration](readme_pics/configuration.png)

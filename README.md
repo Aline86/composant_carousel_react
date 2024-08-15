@@ -3,6 +3,7 @@
 ## Installation
 
 `npm install`
+`npm run dev`
 
 ## Composant principal
 

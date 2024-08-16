@@ -21,5 +21,6 @@
 ![capture du composant principal de configuration](readme_pics/configuration.png)
 
 ```Exemple après implémentation sur un site. Le carousel est customisable facilement. Possibilité de mettre le résultat de l'appel API dans generateColor. Attention à changer le typage.```
-
+<p style="text-align:center">
 ![capture du composant principal de configuration](readme_pics/implemented.png)
+</p>

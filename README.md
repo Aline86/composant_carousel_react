@@ -4,6 +4,8 @@
 
 `npm install`
 
+`npm run dev`
+
 ## Composant principal
 
 `src/Carousel`

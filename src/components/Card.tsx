@@ -11,12 +11,18 @@ interface CardData {
 
 function Card({color, cardRef, transitionFinished, trasnsType, transX, width, gap, height
 } : CardData) {
+    const result = window.matchMedia("(max-width: 700px)");
     if(transitionFinished){
-        return ( <div className="card"  style={{ backgroundColor: `${color}`, width:`${width}px`, height:`${height}px`, marginRight:`${gap}px`, transition: `${trasnsType}`, transform: `translateX(${transX}px)`}} ref={cardRef}></div> )
+        return ( <div className="card-app"  style={{ backgroundColor:`${color}`, width:`${!result.matches ?  `${width}px`: `calc(100vw - 40px)`}`, height:`${height}px`, marginRight:`${!result.matches ? gap : 10}px`, transition: `${trasnsType}`, marginLeft:`${result.matches ? gap * 0.5 : 0}px`, transform: `translateX(${transX}px)`}} ref={cardRef}>
+          
+        </div> )
     }
     else {
-        return ( <div className="card" ref={cardRef} style={{backgroundColor: `${color}`, width:`${width}px`, height:`${height}px`, marginRight:`${gap}px`}}></div> )
+        return ( <div   className="card-app" ref={cardRef} style={{ backgroundColor:`${color}`, width:`${!result.matches ? `${width}px`: `calc(100vw - 40px)`}`, height:`${height}px`, marginRight:`${!result.matches ? gap : 10}px`, marginLeft:`${result.matches ? gap * 0.5 : 0}px`}}>
+          
+        </div> )
     }
+    
 }
 
 export default Card

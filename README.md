@@ -1,4 +1,6 @@
 # Composant de Carousel React + TypeScript adaptable, configurable et surchargeable
+`Visualistion du carousel :`
+`https://composant-carousel-react.vercel.app/`
 
 ## Installation
 

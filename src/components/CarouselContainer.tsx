@@ -105,13 +105,7 @@ function CarouselContainer({
           key={-1}
           index={1}
           color={card}
-          cardRef={cardRef}
-          transitionFinished={transitionFinished}
-          trasnsType={""}
-          transX={move}
           width={width}
-          gap={gap}
-          height={height}
           updateCard={updateCard}
         />
       </div>

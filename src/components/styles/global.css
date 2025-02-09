@@ -1,110 +1,111 @@
 .body {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 .container_class {
-    overflow: hidden;
-    display: flex;
-    position: relative;
-    vertical-align: center;
-    
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  vertical-align: center;
 }
 @media screen and (max-width: 700px) {
-    .container_class {
-        overflow-x: scroll;
-        margin: 0;
-        padding: 0;
-    }
-
-   
+  .container_class {
+    overflow-x: scroll;
+    margin: 0;
+    padding: 0;
+  }
 }
 .card-container {
-    position: relative;
-  
-    
+  position: relative;
 }
 .cards {
-    position: absolute;
-    display: flex;
-   
+  position: absolute;
+  display: flex;
 }
 .card-app {
-    position: relative;
-    border: 1px solid black;
-    border-radius: 15px;
-    object-fit: fit-content;
-    display: flex;
-    justify-content: end;
-    cursor: pointer;
+  position: relative;
+  border: 1px solid black;
+  border-radius: 15px;
+  object-fit: fit-content;
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
 }
-
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.card-app-big {
+  height: 500px;
+  margin: 0 auto;
+}
+.flex {
+  display: block;
+  text-align: center;
+}
 .left {
-    margin-left: 50px;
-    transform: scale(5);
-    display: block;
-    height: 100%;
-    line-height: 100%;
-    color: black;
-    margin-top: -10px;
+  margin-left: 50px;
+  transform: scale(5);
+  display: block;
+  height: 100%;
+  line-height: 100%;
+  color: black;
+  margin-top: -10px;
 }
 
 .right {
-    margin-right: 50px;
-    transform: scale(5);
-    display: block;
-    height: 100%;
-    line-height: 100%;
-    color: black;
-    margin-top: -10px;
+  margin-right: 50px;
+  transform: scale(5);
+  display: block;
+  height: 100%;
+  line-height: 100%;
+  color: black;
+  margin-top: -10px;
 }
 
 button {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .card-app img {
-
-    height: 100%;
-    object-fit: cover;
-
-    
+  height: 100%;
+  object-fit: cover;
 }
 .card-app {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    padding: 0;
-    margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding: 0;
+  margin: 0;
 }
 .card-app .title {
+  width: 100%;
+  display: flex;
+  height: 50px;
+  position: relative;
+  justify-content: center;
 
-    width: 100%;
-    display: flex;
-    height: 50px;
-    position: relative;
-    justify-content: center;
-    
-    background-color: black;
-    opacity: 0.8;
-    color: white;
-    line-height: 50px;
-    text-align: center;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    white-space: nowrap;
-    overflow: hidden;
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+  line-height: 50px;
+  text-align: center;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 @media screen and (max-width: 700px) {
-    .right {
-      
-        display: none;
-    }
-    .left {
-        
-        display: none;
-    }
+  .right {
+    display: none;
+  }
+  .left {
+    display: none;
+  }
 }

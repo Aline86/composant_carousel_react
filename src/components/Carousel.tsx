@@ -1,21 +1,37 @@
-import { useEffect, useState, useRef } from 'react'
-import './styles/global.css'
-import CarouselContainer from "./CarouselContainer"
+import { useEffect, useState, useRef } from "react";
+import "./styles/global.css";
+import CarouselContainer from "./CarouselContainer";
 
 interface CustomCarouselInfo {
-  width: number, 
-  height: number,
-  cardNumber: number,
-  gap: number,
-  
-} 
-function Carousel({width, height, gap, cardNumber}: CustomCarouselInfo) {
+  width: number;
+  height: number;
+  cardNumber: number;
+  gap: number;
+}
+function Carousel({ width, height, gap, cardNumber }: CustomCarouselInfo) {
   const [colors, setColors] = useState<string[]>([]);
   const [transitionFinished, setTransitionFinished] = useState(false);
   const [cardWidth, setCardWidth] = useState<number>(0);
   const cardRef = useRef<HTMLDivElement>();
-  const hexCharacters :any[] =[0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"] ;
-  
+  const hexCharacters: any[] = [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+  ];
+
   function generateColor() {
     let arrayColors = [];
     for (let index = 0; index < cardNumber; index++) {
@@ -25,26 +41,25 @@ function Carousel({width, height, gap, cardNumber}: CustomCarouselInfo) {
   }
 
   function getCharacter(index: any) {
-    return hexCharacters[index]
+    return hexCharacters[index];
   }
-  
-  function generateJustOneColor(){
-      
-    let hexColorRep = "#"
+
+  function generateJustOneColor() {
+    let hexColorRep = "#";
     for (let index = 0; index < 6; index++) {
-        const randomPosition = Math.floor ( Math.random() * hexCharacters.length ) 
-        hexColorRep += getCharacter( randomPosition )
+      const randomPosition = Math.floor(Math.random() * hexCharacters.length);
+      hexColorRep += getCharacter(randomPosition);
     }
 
-    return hexColorRep
+    return hexColorRep;
   }
   function updateCardRef() {
-    const cardWidth: number|undefined = cardRef.current?.clientWidth
-    if(cardWidth !== undefined) {
-      setCardWidth(cardWidth + 15)
+    const cardWidth: number | undefined = cardRef.current?.clientWidth;
+    if (cardWidth !== undefined) {
+      setCardWidth(cardWidth + 15);
     }
   }
- 
+
   function updateTransitionState(state: boolean) {
     setTransitionFinished(state);
   }
@@ -56,27 +71,27 @@ function Carousel({width, height, gap, cardNumber}: CustomCarouselInfo) {
   useEffect(() => {
     generateColor();
   }, []);
-  
+
   return (
-    <div className="body-container" >
-        {colors.length === cardNumber && 
-          <CarouselContainer 
-            width={width} 
-            height={height} 
-            gap={gap}
-            updateColors={updateColors} 
-            colors={colors} 
-            transitionFinished={transitionFinished} 
-            updateTransitionState={updateTransitionState} 
-            cardWidth={cardWidth} 
-            updateCardRef={updateCardRef} 
-            cardRef={cardRef} 
-            cardNumber={cardNumber}
-          />
-        }       
+    <div className="body-container">
+      {colors.length === cardNumber && (
+        <CarouselContainer
+          width={width}
+          height={height}
+          gap={gap}
+          updateColors={updateColors}
+          colors={colors}
+          transitionFinished={transitionFinished}
+          updateTransitionState={updateTransitionState}
+          cardWidth={cardWidth}
+          updateCardRef={updateCardRef}
+          cardRef={cardRef}
+          cardNumber={cardNumber}
+          setColors={setColors}
+        />
+      )}
     </div>
-    
-  )
+  );
 }
 
-export default Carousel
+export default Carousel;

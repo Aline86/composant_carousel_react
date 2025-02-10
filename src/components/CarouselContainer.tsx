@@ -39,15 +39,15 @@ function CarouselContainer({
 
   function updateCard(e: any) {
     setCard(colors[e.target.getAttribute("data-value")]);
-    const trans =
-      Number(colors.length) - 1 - Number(e.target.getAttribute("data-value"));
-    let col_int = colors.splice(0, e.target.getAttribute("data-value") - 1);
 
-    setMove(-cardWidth * trans - (gap / 2) * trans);
-    setColors(colors.concat(col_int));
+    const trans = Number(e.target.getAttribute("data-value")) - 1;
+    setMove(-(cardWidth * trans));
+    setTrigger(trigger + 1);
+    updateTransitionState(true);
     setIsLeft(true);
 
-    updateTransitionLeft();
+    let res = updateTransitionLeft2(e);
+    setColors(colors.concat(res));
   }
   function updateTransitionLeft() {
     const popItem = colors.pop();
@@ -58,7 +58,10 @@ function CarouselContainer({
       updateTransitionState(true);
     }
   }
-
+  function updateTransitionLeft2(e: any) {
+    let col_int = colors.splice(0, e.target.getAttribute("data-value") - 2);
+    return col_int;
+  }
   function updateTransitionRight() {
     const shiftItem = colors.shift();
     if (shiftItem !== undefined) {
@@ -160,7 +163,7 @@ function CarouselContainer({
                     color={value}
                     cardRef={cardRef}
                     transitionFinished={transitionFinished}
-                    trasnsType={"transform 0.3s ease-in"}
+                    trasnsType={"transform 0.2s ease-in"}
                     transX={move}
                     width={width}
                     gap={gap}
@@ -176,7 +179,7 @@ function CarouselContainer({
                   color={colors[0]}
                   cardRef={cardRef}
                   transitionFinished={transitionFinished}
-                  trasnsType={"transform 0.3s ease-in"}
+                  trasnsType={"transform 0.2s ease-in"}
                   transX={move}
                   width={width}
                   gap={gap}

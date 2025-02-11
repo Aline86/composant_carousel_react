@@ -162,7 +162,7 @@ function CarouselContainer({
             minWidth: `${cardWidth + gap} px`,
             margin: `${gap}px auto`,
             height: `${!result.matches ? height + 2 : height * 0.3 + 3}px`,
-            width: `${result.matches ? "80vw" : "90vw"}`,
+            width: `${result.matches ? "95vw" : "90vw"}`,
           }}
         >
           <div

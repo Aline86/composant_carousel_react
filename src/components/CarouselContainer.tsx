@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
 import BigCard from "./BigCard";
-import { useSwipeable } from "react-swipeable";
 
 interface CarouselData {
   colors: string[];

@@ -32,7 +32,7 @@ function Card({
           backgroundColor: `${color}`,
           width: `${!result.matches ? `${width}px` : `${width * 0.3}px`}`,
           height: `${!result.matches ? `${height}px` : `${height * 0.3}px`}`,
-          marginRight: `${!result.matches ? gap : gap * 0.5}px`,
+          marginRight: `${!result.matches ? gap : gap * 0.5 + 1}px`,
           transition: `${trasnsType}`,
           marginLeft: `${result.matches ? gap * 0.3 : 0}px`,
           transform: `translateX(${transX}px)`,
@@ -51,7 +51,7 @@ function Card({
           backgroundColor: `${color}`,
           width: `${!result.matches ? `${width}px` : `${width * 0.3}px`}`,
           height: `${!result.matches ? `${height}px` : `${height * 0.3}px`}`,
-          marginRight: `${!result.matches ? gap : gap * 0.5}px`,
+          marginRight: `${!result.matches ? gap : gap * 0.5 + 1}px`,
           marginLeft: `${result.matches ? gap * 0.3 : 0}px`,
         }}
       ></div>

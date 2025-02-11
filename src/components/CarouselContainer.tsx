@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
 import BigCard from "./BigCard";
+import fleche from "./img/fleche.png";
 
 interface CarouselData {
   colors: string[];
@@ -134,7 +135,7 @@ function CarouselContainer({
         }}
       >
         {transitionFinished ? (
-          <button
+          <span
             className="left"
             style={{
               marginRight: `${!result.matches ? gap * 0.5 : 0}px`,
@@ -142,18 +143,18 @@ function CarouselContainer({
               color: "lightgray",
             }}
           >
-            <span>&#x27E8;</span>
-          </button>
+            <img src={fleche} alt="flèche de doite" />
+          </span>
         ) : (
-          <button
+          <span
             className="left"
             onClick={() => moveRight()}
             style={{
               marginRight: `${!result.matches ? gap * 0.5 : 0}px`,
             }}
           >
-            <span>&#x27E8;</span>
-          </button>
+            <img src={fleche} alt="flèche de doite" />
+          </span>
         )}
         <div
           className="container_class"
@@ -208,7 +209,7 @@ function CarouselContainer({
           </div>
         </div>
         {transitionFinished ? (
-          <button
+          <span
             className="right"
             style={{
               marginLeft: `${!result.matches ? gap : gap * 0.5}px`,
@@ -216,18 +217,18 @@ function CarouselContainer({
               color: "lightgray",
             }}
           >
-            <span>&#x27E9;</span>
-          </button>
+            <img src={fleche} alt="flèche de gauche" />
+          </span>
         ) : (
-          <button
+          <span
             className="right"
             onClick={() => moveLeft()}
             style={{
               marginLeft: `${!result.matches ? gap : gap * 0.5}px`,
             }}
           >
-            <span>&#x27E9;</span>
-          </button>
+            <img src={fleche} alt="flèche de gauche" />
+          </span>
         )}
       </div>
     </div>

@@ -50,7 +50,7 @@
 }
 .left {
   display: block;
-
+  cursor: pointer;
   color: black;
 }
 
@@ -58,7 +58,7 @@
   margin-right: 5px;
   transform: rotate(180deg);
   display: block;
-
+  cursor: pointer;
   color: black;
 }
 .left span,

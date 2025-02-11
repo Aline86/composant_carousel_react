@@ -13,6 +13,9 @@ function Carousel({ width, height, gap, cardNumber }: CustomCarouselInfo) {
   const [transitionFinished, setTransitionFinished] = useState(false);
   const [cardWidth, setCardWidth] = useState<number>(0);
   const cardRef = useRef<HTMLDivElement>();
+  const [clic, setIsClic] = useState(false);
+
+  const [cardValue, setCardValue] = useState(0);
   const hexCharacters: any[] = [
     0,
     1,
@@ -31,7 +34,25 @@ function Carousel({ width, height, gap, cardNumber }: CustomCarouselInfo) {
     "E",
     "F",
   ];
+  function updateCardEnd() {
+    document.addEventListener("transitionend", function (e) {
+      e.preventDefault();
 
+      if (colors.length === cardNumber) {
+        console.log("cardValue", cardValue);
+        console.log("colore", colors);
+        console.log("cardNumber", cardNumber);
+
+        let res = colors.splice(0, cardValue);
+        console.log("res", res);
+
+        let col = colors.concat(res);
+        setColors(col);
+        console.log("col", col);
+        setIsClic(false);
+      }
+    });
+  }
   function generateColor() {
     let arrayColors = [];
     for (let index = 0; index < cardNumber; index++) {
@@ -71,7 +92,7 @@ function Carousel({ width, height, gap, cardNumber }: CustomCarouselInfo) {
   useEffect(() => {
     generateColor();
   }, []);
-
+  useEffect(() => {}, [colors]);
   return (
     <div className="body-container">
       {colors.length === cardNumber && (
@@ -87,7 +108,11 @@ function Carousel({ width, height, gap, cardNumber }: CustomCarouselInfo) {
           updateCardRef={updateCardRef}
           cardRef={cardRef}
           cardNumber={cardNumber}
-          setColors={setColors}
+          setIsClic={setIsClic}
+          setCardValue={setCardValue}
+          updateCardEnd={updateCardEnd}
+          clic={clic}
+          cardValue={cardValue}
         />
       )}
     </div>

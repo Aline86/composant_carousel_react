@@ -111,7 +111,6 @@ function Carousel({ width, height, gap, cardNumber }: CustomCarouselInfo) {
           cardWidth={cardWidth}
           updateCardRef={updateCardRef}
           cardRef={cardRef}
-          cardNumber={cardNumber}
           setIsClic={setIsClic}
           setCardValue={setCardValue}
           updateCardEnd={updateCardEnd}

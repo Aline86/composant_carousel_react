@@ -2,7 +2,7 @@ import { useSwipeable } from "react-swipeable";
 
 interface CardData {
   color: string;
-
+  height: number;
   width: number;
   updateCard: any;
   index: number;
@@ -13,6 +13,7 @@ interface CardData {
 function BigCard({
   color,
   width,
+  height,
   updateCard,
   index,
   moveLeft,
@@ -31,8 +32,9 @@ function BigCard({
       data-value={index}
       style={{
         backgroundColor: `${color}`,
-        width: `${!result.matches ? `${width * 3}px` : `calc(100vw - 40px)`}`,
+        width: `${!result.matches ? `${width * 3}px` : `${width}px`}`,
         transition: "background-color ease-in-out 0.5s",
+        height: `${!result.matches ? `${height}px` : `${height}px`}`,
         margin: `0 auto`,
       }}
     ></div>

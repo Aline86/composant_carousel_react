@@ -53,7 +53,7 @@ function CarouselContainer({
       setCardValue(e.target.getAttribute("data-value") - 2);
       setIsClic(true);
       const trans = Number(e.target.getAttribute("data-value")) - 1;
-      setMove(-(cardWidth * trans));
+      setMove(-((cardWidth + gap * 0.3) * trans));
       setIsLeft(true);
       setTrigger(trigger + 1);
 
@@ -122,6 +122,7 @@ function CarouselContainer({
           updateCard={updateCard}
           moveLeft={moveLeft}
           moveRight={moveRight}
+          height={height}
         />
       </div>
 
@@ -136,7 +137,7 @@ function CarouselContainer({
           <button
             className="left"
             style={{
-              marginRight: `${!result.matches ? gap : 0}px`,
+              marginRight: `${!result.matches ? gap : gap * 0.3 * 0.5}px`,
               pointerEvents: "none",
               color: "lightgray",
             }}
@@ -147,7 +148,9 @@ function CarouselContainer({
           <button
             className="left"
             onClick={() => moveRight()}
-            style={{ marginRight: `${gap}px` }}
+            style={{
+              marginRight: `${!result.matches ? gap : gap * 0.3 * 0.5}px`,
+            }}
           >
             <span>&#x27E8;</span>
           </button>
@@ -157,7 +160,7 @@ function CarouselContainer({
           style={{
             minWidth: `${cardWidth + gap} px`,
             margin: `${gap}px auto`,
-            height: `${height + 2}px`,
+            height: `${!result.matches ? height + 2 : height * 0.3 + 3}px`,
             width: `${width * cardNumber}px`,
             maxWidth: "100%",
           }}
@@ -209,7 +212,7 @@ function CarouselContainer({
           <button
             className="right"
             style={{
-              marginLeft: `${!result.matches ? gap : 0}px`,
+              marginLeft: `${!result.matches ? gap : gap * 0.5}px`,
               pointerEvents: "none",
               color: "lightgray",
             }}
@@ -220,7 +223,7 @@ function CarouselContainer({
           <button
             className="right"
             onClick={() => moveLeft()}
-            style={{ marginLeft: `${gap}px` }}
+            style={{ marginLeft: `${!result.matches ? gap : gap * 0.5}px` }}
           >
             <span>&#x27E9;</span>
           </button>

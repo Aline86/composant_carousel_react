@@ -30,11 +30,11 @@ function Card({
         className="card-app"
         style={{
           backgroundColor: `${color}`,
-          width: `${!result.matches ? `${width}px` : `calc(100vw - 40px)`}`,
-          height: `${height}px`,
-          marginRight: `${!result.matches ? gap : 10}px`,
+          width: `${!result.matches ? `${width}px` : `${width * 0.3}px`}`,
+          height: `${!result.matches ? `${height}px` : `${height * 0.3}px`}`,
+          marginRight: `${!result.matches ? gap : gap * 0.3}px`,
           transition: `${trasnsType}`,
-          marginLeft: `${result.matches ? gap * 0.5 : 0}px`,
+          marginLeft: `${result.matches ? gap * 0.3 : 0}px`,
           transform: `translateX(${transX}px)`,
         }}
         ref={cardRef}
@@ -49,10 +49,10 @@ function Card({
         data-value={index}
         style={{
           backgroundColor: `${color}`,
-          width: `${!result.matches ? `${width}px` : `calc(100vw - 40px)`}`,
-          height: `${height}px`,
-          marginRight: `${!result.matches ? gap : 10}px`,
-          marginLeft: `${result.matches ? gap * 0.5 : 0}px`,
+          width: `${!result.matches ? `${width}px` : `${width * 0.3}px`}`,
+          height: `${!result.matches ? `${height}px` : `${height * 0.3}px`}`,
+          marginRight: `${!result.matches ? gap : gap * 0.3}px`,
+          marginLeft: `${result.matches ? gap * 0.3 : 0}px`,
         }}
       ></div>
     );

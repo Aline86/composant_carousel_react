@@ -14,7 +14,7 @@ function Carousel({ width, height, gap, cardNumber }: CustomCarouselInfo) {
   const [cardWidth, setCardWidth] = useState<number>(0);
   const cardRef = useRef<HTMLDivElement>();
   const [clic, setIsClic] = useState(false);
-
+  const result = window.matchMedia("(max-width: 700px)");
   const [cardValue, setCardValue] = useState(0);
   const hexCharacters: any[] = [
     0,
@@ -77,7 +77,11 @@ function Carousel({ width, height, gap, cardNumber }: CustomCarouselInfo) {
   function updateCardRef() {
     const cardWidth: number | undefined = cardRef.current?.clientWidth;
     if (cardWidth !== undefined) {
-      setCardWidth(cardWidth + 15);
+      if (result.matches) {
+        setCardWidth(cardWidth);
+      } else {
+        setCardWidth(cardWidth);
+      }
     }
   }
 

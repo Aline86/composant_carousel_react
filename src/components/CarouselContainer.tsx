@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
 import BigCard from "./BigCard";
+import { useSwipeable } from "react-swipeable";
 
 interface CarouselData {
   colors: string[];
@@ -18,6 +19,7 @@ interface CarouselData {
   setCardValue: any;
   updateCardEnd: any;
   clic: boolean;
+  cardValue: number;
 }
 
 function CarouselContainer({
@@ -36,6 +38,7 @@ function CarouselContainer({
   setCardValue,
   updateCardEnd,
   clic,
+  cardValue,
 }: CarouselData) {
   const [trigger, setTrigger] = useState(0);
   const [move, setMove] = useState(0);
@@ -47,14 +50,16 @@ function CarouselContainer({
 
   function updateCard(e: any) {
     setCard(colors[e.target.getAttribute("data-value")]);
-    setCardValue(e.target.getAttribute("data-value") - 2);
-    setIsClic(true);
-    const trans = Number(e.target.getAttribute("data-value")) - 1;
-    setMove(-(cardWidth * trans));
-    setIsLeft(true);
-    setTrigger(trigger + 1);
+    if (e.target.getAttribute("data-value") > 1) {
+      setCardValue(e.target.getAttribute("data-value") - 2);
+      setIsClic(true);
+      const trans = Number(e.target.getAttribute("data-value")) - 1;
+      setMove(-(cardWidth * trans));
+      setIsLeft(true);
+      setTrigger(trigger + 1);
 
-    updateTransitionState(true);
+      updateTransitionState(true);
+    }
 
     //
   }
@@ -116,13 +121,15 @@ function CarouselContainer({
           color={card}
           width={width}
           updateCard={updateCard}
+          moveLeft={moveLeft}
+          moveRight={moveRight}
         />
       </div>
 
       <div
         className="body"
         onTransitionEnd={() => {
-          clic && updateCardEnd();
+          clic && cardValue > 0 && updateCardEnd();
           updateTransitionState(false);
         }}
       >

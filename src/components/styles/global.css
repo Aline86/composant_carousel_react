@@ -104,4 +104,7 @@ button {
   .right span {
     height: 18px;
   }
+  .body {
+    width: 85vw;
+  }
 }

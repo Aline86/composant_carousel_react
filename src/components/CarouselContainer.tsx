@@ -137,7 +137,7 @@ function CarouselContainer({
           <button
             className="left"
             style={{
-              marginRight: `${!result.matches ? gap * 0.5 : gap * 0.3}px`,
+              marginRight: `${!result.matches ? gap * 0.5 : 0}px`,
               pointerEvents: "none",
               color: "lightgray",
             }}
@@ -149,7 +149,7 @@ function CarouselContainer({
             className="left"
             onClick={() => moveRight()}
             style={{
-              marginRight: `${!result.matches ? gap * 0.5 : gap * 0.3}px`,
+              marginRight: `${!result.matches ? gap * 0.5 : 0}px`,
             }}
           >
             <span>&#x27E8;</span>

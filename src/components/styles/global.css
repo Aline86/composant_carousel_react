@@ -48,7 +48,6 @@
   text-align: center;
 }
 .left {
-  margin-left: 50px;
   transform: scale(5);
   display: block;
 
@@ -56,7 +55,7 @@
 }
 
 .right {
-  margin-right: 50px;
+  margin-right: 5px;
   transform: scale(5);
   display: block;
 
@@ -104,6 +103,6 @@ button {
 @media screen and (max-width: 700px) {
   .left span,
   .right span {
-    height: 20px;
+    height: 18px;
   }
 }

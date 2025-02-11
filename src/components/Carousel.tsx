@@ -43,6 +43,7 @@ function Carousel({ width, height, gap, cardNumber }: CustomCarouselInfo) {
         console.log("res", res);
         console.log(res);
         setColors(colors.concat(res));
+        setIsClic(false);
       }
     });
   }

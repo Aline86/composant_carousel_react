@@ -13,7 +13,7 @@ interface CarouselData {
   width: number;
   height: number;
   gap: number;
-  cardNumber: number;
+
   setIsClic: any;
   setCardValue: any;
   updateCardEnd: any;
@@ -32,7 +32,7 @@ function CarouselContainer({
   width,
   gap,
   height,
-  cardNumber,
+
   setIsClic,
   setCardValue,
   updateCardEnd,

@@ -1,6 +1,7 @@
 .body {
   display: flex;
   align-items: center;
+
   margin: 0;
   padding: 0;
 }
@@ -50,22 +51,22 @@
   margin-left: 50px;
   transform: scale(5);
   display: block;
-  height: 100%;
-  line-height: 100%;
+
   color: black;
-  margin-top: -8px;
 }
 
 .right {
   margin-right: 50px;
   transform: scale(5);
   display: block;
-  height: 100%;
-  line-height: 100%;
-  color: black;
-  margin-top: -8px;
-}
 
+  color: black;
+}
+.left span,
+.right span {
+  display: block;
+  height: 15px;
+}
 button {
   border: none;
   background-color: transparent;
@@ -100,11 +101,9 @@ button {
   white-space: nowrap;
   overflow: hidden;
 }
-/*@media screen and (max-width: 700px) {
-  .right {
-    display: none;
+@media screen and (max-width: 700px) {
+  .left span,
+  .right span {
+    height: 20px;
   }
-  .left {
-    display: none;
-  }
-}*/
+}

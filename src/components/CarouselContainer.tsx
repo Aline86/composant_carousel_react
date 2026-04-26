@@ -14,7 +14,7 @@ interface CarouselData {
   width: number;
   height: number;
   gap: number;
-
+  trigger: number;
   setIsClic: any;
   setCardValue: any;
   updateCardEnd: any;
@@ -36,11 +36,10 @@ function CarouselContainer({
 
   setIsClic,
   setCardValue,
-  updateCardEnd,
+
   clic,
   cardValue,
 }: CarouselData) {
-  const [trigger, setTrigger] = useState(0);
   const [move, setMove] = useState(0);
   const [isLeft, setIsLeft] = useState(true);
 
@@ -49,45 +48,25 @@ function CarouselContainer({
   const result = window.matchMedia("(max-width: 700px)");
 
   function updateCard(e: any) {
-    setCard(colors[e.target.getAttribute("data-value")]);
-    if (e.target.getAttribute("data-value") > 1) {
-      setCardValue(e.target.getAttribute("data-value") - 2);
-      setIsClic(true);
-      const trans = Number(e.target.getAttribute("data-value")) - 1;
-      setMove(-((cardWidth + gap * 0.3) * trans));
-      setIsLeft(true);
-      setTrigger(trigger + 1);
+    const value = Number(e.currentTarget.getAttribute("data-value"));
+    if (isNaN(value) || value <= 1) return;
 
-      updateTransitionState(true);
-    }
+    const trans = value - 1;
 
-    //
-  }
+    setCard(colors[value]);
+    setIsClic(true);
+    setIsLeft(true);
+    setCardValue(trans);
 
-  function updateTransitionLeft() {
-    const popItem = colors.pop();
-    if (popItem !== undefined) {
-      colors.unshift(popItem);
+    setMove(-(cardWidth + gap) * trans);
 
-      updateColors(colors);
-      updateTransitionState(true);
-    }
-  }
-
-  function updateTransitionRight() {
-    const shiftItem = colors.shift();
-    if (shiftItem !== undefined) {
-      colors.push(shiftItem);
-      updateColors(colors);
-
-      updateTransitionState(true);
-    }
+    updateTransitionState(true);
   }
 
   function moveLeft() {
     setMove(-cardWidth - gap / 2);
     setIsLeft(true);
-    setTrigger(trigger + 1);
+    setIsClic(false);
     updateTransitionState(true);
     setCard(colors[2]);
   }
@@ -95,7 +74,7 @@ function CarouselContainer({
   function moveRight() {
     setMove(cardWidth + gap / 2);
     setIsLeft(false);
-    setTrigger(trigger + 1);
+    setIsClic(false);
     updateTransitionState(true);
     setCard(colors[0]);
   }
@@ -103,14 +82,6 @@ function CarouselContainer({
   useEffect(() => {
     updateCardRef();
   }, []);
-
-  useEffect(() => {
-    if (!isLeft) {
-      updateTransitionLeft();
-    } else {
-      updateTransitionRight();
-    }
-  }, [trigger]);
 
   return (
     <div>
@@ -130,7 +101,29 @@ function CarouselContainer({
       <div
         className="body"
         onTransitionEnd={() => {
-          clic && cardValue > 0 && updateCardEnd();
+          if (clic) {
+            let newColors = [...colors];
+
+            for (let i = 0; i < cardValue; i++) {
+              const shiftItem = newColors.shift();
+              if (shiftItem !== undefined) {
+                newColors.push(shiftItem);
+              }
+            }
+
+            updateColors(newColors);
+            setIsClic(false);
+          } else {
+            if (isLeft) {
+              const shiftItem = colors[0];
+              updateColors([...colors.slice(1), shiftItem]);
+            } else {
+              const last = colors[colors.length - 1];
+              updateColors([last, ...colors.slice(0, -1)]);
+            }
+          }
+
+          setMove(0);
           updateTransitionState(false);
         }}
       >

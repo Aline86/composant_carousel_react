@@ -16,6 +16,7 @@ function Carousel({ width, height, gap, cardNumber }: CustomCarouselInfo) {
   const [clic, setIsClic] = useState(false);
   const result = window.matchMedia("(max-width: 700px)");
   const [cardValue, setCardValue] = useState(0);
+  const [trigger, setTrigger] = useState(0);
   const hexCharacters: any[] = [
     0,
     1,
@@ -35,23 +36,14 @@ function Carousel({ width, height, gap, cardNumber }: CustomCarouselInfo) {
     "F",
   ];
   function updateCardEnd() {
-    document.addEventListener("transitionend", function (e) {
-      e.preventDefault();
+    let res = colors.splice(0, cardValue);
 
-      if (colors.length === cardNumber) {
-        console.log("cardValue", cardValue);
-        console.log("colore", colors);
-        console.log("cardNumber", cardNumber);
+    let col = colors.concat(res);
+    setColors(col);
 
-        let res = colors.splice(0, cardValue);
-        console.log("res", res);
+    setIsClic(false);
 
-        let col = colors.concat(res);
-        setColors(col);
-        console.log("col", col);
-        setIsClic(false);
-      }
-    });
+    setTrigger(trigger + 1);
   }
   function generateColor() {
     let arrayColors = [];
@@ -89,8 +81,8 @@ function Carousel({ width, height, gap, cardNumber }: CustomCarouselInfo) {
     setTransitionFinished(state);
   }
 
-  function updateColors(state: boolean) {
-    setTransitionFinished(state);
+  function updateColors(state: any) {
+    setColors(state);
   }
 
   useEffect(() => {
@@ -116,6 +108,7 @@ function Carousel({ width, height, gap, cardNumber }: CustomCarouselInfo) {
           updateCardEnd={updateCardEnd}
           clic={clic}
           cardValue={cardValue}
+          trigger={trigger}
         />
       )}
     </div>
